@@ -2,49 +2,19 @@
 
 namespace RBac\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
 use Rbac\Role\HierarchicalRoleInterface;
 use ZfcRbac\Permission\PermissionInterface;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="roles")
- */
+
 class HierarchicalRole implements HierarchicalRoleInterface
 {
-    /**
-     * @var int|null
-     *
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     protected $id;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=48, unique=true)
-     */
     protected $name;
-
-    /**
-     * @var HierarchicalRoleInterface[]|\Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="HierarchicalRole")
-     */
-    protected $children = [];
-
-    /**
-     * @var PermissionInterface[]|\Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Permission", indexBy="name", fetch="EAGER")
-     */
+    protected $children = array();
     protected $permissions;
 
     /**
-     * Init the Doctrine collection
+     * Init the collection
      */
     public function __construct()
     {
@@ -128,5 +98,10 @@ class HierarchicalRole implements HierarchicalRoleInterface
     public function hasChildren()
     {
         return !$this->children->isEmpty();
+    }
+    
+    public function exchangeArray($data) {
+        $this->id = (!empty($data['id'])) ? $data['id'] : null;
+        $this->name = (!empty($data['name'])) ? $data['name'] : null;
     }
 }

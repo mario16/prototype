@@ -1,0 +1,28 @@
+{
+    "name": "jmleroux/jml-rbac-zdb",
+    "description": "Zend providers for ZfcRbac module",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "module",
+        "zf2",
+        "rbac"
+    ],
+    "homepage": "http://www.github.com/jmleroux/JmlRbacZdb/",
+    "authors": [
+        {
+            "name": "JM Leroux",
+            "email": "jmleroux.pro@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zf-commons/zfc-rbac": "dev-master"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "JmlRbacZdb\\": "src/"
+        }
+    }
+}

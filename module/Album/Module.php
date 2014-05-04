@@ -43,12 +43,12 @@ class Module
                     $resultSetPrototype->setArrayObjectPrototype(new Album());
                     return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
                 },
-                'AlbumController' => function($sm) {
+                /*'AlbumController' => function($sm) {
                      return new AlbumController(
                          $sm->get('doctrine.entitymanager.orm_default'),
                          $sm->get('ZfcRbac\Service\AuthorizationService') // This is new!
                      );
-                 }
+                 }*/
                         /*'RBACService' => function($sm) {
                     $authService = $sm->get('ZfcRbac\Service\AuthorizationService');
                     return new RBACService($authService);

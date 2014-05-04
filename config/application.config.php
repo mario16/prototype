@@ -8,14 +8,12 @@
 return array(
     'modules' => array(
         'Application',
-        'DoctrineModule',
-        'DoctrineORMModule',
         'ZfcBase',
         'ZfcUser',
-        'ZfcUserDoctrineORM',
         'ZfcRbac',
         'RBac',
-        'Album'
+        'Album',
+        'JmlRbacZdb'
         ),
     'module_listener_options' => array(
         'module_paths' => array(

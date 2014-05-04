@@ -2,30 +2,11 @@
 
 namespace RBac\Entity;
 
-
-use Doctrine\ORM\Mapping as ORM;
 use ZfcRbac\Permission\PermissionInterface;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="permissions")
- */
 class Permission implements PermissionInterface
 {
-    /**
-     * @var int|null
-     *
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     protected $id;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=128, unique=true)
-     */
     protected $name;
 
     /**
@@ -53,4 +34,10 @@ class Permission implements PermissionInterface
     {
         return $this->name;
     }
+    
+    public function exchangeArray($data) {
+        $this->id = (!empty($data['id'])) ? $data['id'] : null;
+        $this->name = (!empty($data['name'])) ? $data['name'] : null;
+    }
+    
 }
